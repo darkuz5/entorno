@@ -11,18 +11,27 @@ import android.location.LocationManager;
 public class SQLiteHelper extends SQLiteOpenHelper {
 	
 	LocationManager mLocationManager;
+
+    String seccion    = "CREATE TABLE if not exists seccion (id varchar(100), nombre TEXT)";    
+    String subsecc    = "CREATE TABLE if not exists subsecc (id varchar(100), nombre TEXT)";   
+    String autor      = "CREATE TABLE if not exists autor   (id varchar(100), nombre TEXT)"; 
+    String notasp     = "CREATE TABLE if not exists notap   (id varchar(100), titulo varchar(500),"
+    		+ "resumen text, texto text, autor varchar(100), seccion  varchar(100), subseccion  varchar(100),"
+    		+ "fecha varchar(100), hora  varchar(100), posicion  varchar(100), url  varchar(500), foto1  varchar(100),"
+    		+ "foto1img blob, foto2  varchar(100), foto2img blob, foto3  varchar(100), foto3img blob)";
+    String notas      = "CREATE TABLE if not exists nota    (id varchar(100), titulo varchar(500),"
+    		+ "resumen text, texto text, autor varchar(100), seccion  varchar(100), subseccion  varchar(100),"
+    		+ "fecha varchar(100), hora  varchar(100), posicion  varchar(100), url  varchar(500), foto1  varchar(100),"
+    		+ "foto1img blob, foto2  varchar(100), foto2img blob, foto3  varchar(100), foto3img blob)";
+    String columnap  = "create table if no exists columnap (id varchar(100), idn varchar(100), titulo varchar(1000),"
+    		+ "texto text, fecha varchar(100), hora varchar(100), seccion varchar(500), autor varchar(500), orden varchar(100),"
+    		+ "url varchar(500), foto varchar(300), fotoimg blob)";
+    String columna   = "create table if no exists columna  (id varchar(100), idn varchar(100), titulo varchar(1000),"
+    		+ "texto text, fecha varchar(100), hora varchar(100), seccion varchar(500), autor varchar(500), orden varchar(100),"
+    		+ "url varchar(500), foto varchar(300), fotoimg blob)";
+    
+	 
   
-    String activo    = "CREATE TABLE if not exists medidas (id varchar(100), nombre TEXT)";    
-	String insertaD  = "insert into medidas (id,nombre) values ('1','0')";
-	String insertaE  = "insert into medidas (id,nombre) values ('3','0')";
-	String insertaN  = "insert into medidas (id,nombre) values ('5','1')";
-	String insertaI  = "insert into medidas (id,nombre) values ('7','0')";
-	String noticias  = "CREATE TABLE if not exists noticias (id varchar(100), titulo TEXT, resumen TEXT, texto TEXT, foto varchar(200), fotomini varchar(200), pie TEXT, "
-			+ "seccion varchar(200), fecha varchar(150), ofecha varchar(150), hora varchar(100) )";
-	String notificacion  = "CREATE TABLE if not exists notificacion (id varchar(100), titulo TEXT, resumen TEXT, texto TEXT, foto varchar(200), fotomini varchar(200), pie TEXT, "
-			+ "seccion varchar(200), fecha varchar(150), ofecha varchar(150), hora varchar(100) )";
-	String tw = "CREATE TABLE if not exists twitter (id varchar(200), nombre TEXT)";   
- 
     public SQLiteHelper(Context contexto, String nombre,
                                CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
@@ -30,32 +39,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
  
     @Override
     public void onCreate(SQLiteDatabase db) { 
-        db.execSQL(activo);  
-        db.execSQL(notificacion);  
-        db.execSQL(noticias);  
-        db.execSQL(tw);  
-        Cursor checa=db.rawQuery("select * from medidas where id='1'", null);
-        if (checa.getCount() < 1 ) {
-        	db.execSQL(insertaD);
-        	db.execSQL(insertaE);
-        	db.execSQL(insertaN);
-        	db.execSQL(insertaI);
-        }
+        db.execSQL(seccion);  
+        db.execSQL(subsecc);  
+        db.execSQL(autor);  
+        db.execSQL(notasp);  
+        db.execSQL(notas);  
+        db.execSQL(columnap);  
+        db.execSQL(columna);   
+        
     }
  
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) { 
-        db.execSQL(activo);
-        db.execSQL(notificacion);  
-        db.execSQL(noticias); 
-        db.execSQL(tw);  
-        Cursor checa=db.rawQuery("select * from medidas where id='1'", null);
-        if (checa.getCount() < 1 ) {
-        	db.execSQL(insertaD);
-        	db.execSQL(insertaE);
-        	db.execSQL(insertaN);
-        	db.execSQL(insertaI);
-        }
+        db.execSQL(seccion);  
+        db.execSQL(subsecc);  
+        db.execSQL(autor);  
+        db.execSQL(notasp);  
+        db.execSQL(notas);  
+        db.execSQL(columnap);  
+        db.execSQL(columna);  
         
     }
  
