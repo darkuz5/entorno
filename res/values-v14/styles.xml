@@ -1,0 +1,21 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- API 14 theme customizations can go here. -->
+ 
+    <!-- Main theme colors -->
+    <!--   your app branding color for the app bar -->
+    <item name="android:headerBackground">#424D57</item>
+    <item name="android:selectedWeekBackgroundColor">#2DAAE1</item> 
+    <!--   darker variant for the status bar and contextual app bars -->   
+  </style>
+  
+    
+  
+
+</resources>
