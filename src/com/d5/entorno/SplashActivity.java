@@ -1,7 +1,13 @@
 package com.d5.entorno;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParsePush;
+import com.parse.SaveCallback;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window; 
@@ -13,6 +19,17 @@ public class SplashActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_splash);
+		
+		ParsePush.subscribeInBackground("notas", new SaveCallback() {
+			  @Override
+			  public void done(ParseException e) {
+			    if (e == null) {
+			      Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
+			    } else {
+			      Log.e("com.parse.push", "failed to subscribe for push", e);
+			    }
+			  }
+			});
 	}
 
 	@Override
