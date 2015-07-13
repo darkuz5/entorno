@@ -5,10 +5,11 @@ import com.parse.ParseACL;
 import com.parse.ParseUser;
 
 import android.app.Application;
+import android.graphics.Typeface;
 import android.util.Log;
 
 public class EntornoApplication extends Application {
-
+	 public Typeface opensans;
   @Override
   public void onCreate() {
     super.onCreate();
@@ -18,7 +19,7 @@ public class EntornoApplication extends Application {
 
     // Enable Local Datastore.
     Parse.enableLocalDatastore(this);
-
+    opensans = Typeface.createFromAsset(getAssets(), "fonts/helveticalight.otf");
     // Add your initialization code here
     Parse.initialize(this, "iUmRAwcpLYZGRQEtrED0XcAXHXDT7kmRSAJQoxmi", "daVwbQKr90i90QTv2dwy0kPJ7p8URphgXM65ujAj");
     Log.i("Inicializacion Parse	","OK");

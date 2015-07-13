@@ -4,8 +4,9 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParsePush;
 import com.parse.SaveCallback;
-
+ 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +31,11 @@ public class SplashActivity extends Activity {
 			    }
 			  }
 			});
+		
+		Intent intena = new Intent(getApplicationContext(), MainActivity.class);
+		intena.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intena); 
+		
 	}
 
 	@Override
